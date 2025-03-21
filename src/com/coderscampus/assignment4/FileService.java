@@ -31,7 +31,7 @@ private static final String [] COURSE_PREFIXES = {"APMTH", "COMPSCI", "STAT"};
 			} 
 			return students;
 		}
-    private int countStudentsInCoursePrefix(Student[] students, String prefix) {
+    private int countStudentsInCourse(Student[] students, String prefix) {
         int count = 0;
         
         for (int i = 0; i < students.length; i++) {
@@ -41,8 +41,8 @@ private static final String [] COURSE_PREFIXES = {"APMTH", "COMPSCI", "STAT"};
         }
         return count;
     }
-    private Student[] getStudentsForCoursePrefix(Student[] allStudents, String prefix) {
-        int count = countStudentsInCoursePrefix(allStudents, prefix);
+    private Student[] getStudentsForCourse(Student[] allStudents, String prefix) {
+        int count = countStudentsInCourse(allStudents, prefix);
         Student[] prefixStudents = new Student[count];
         int index = 0;
         
@@ -79,7 +79,7 @@ private static final String [] COURSE_PREFIXES = {"APMTH", "COMPSCI", "STAT"};
     public void processAndSaveStudentsByCourse(Student[] students) {
         for (int i = 0; i < COURSE_PREFIXES.length; i++) {
             String prefix = COURSE_PREFIXES[i];
-            Student[] prefixStudents = getStudentsForCoursePrefix(students, prefix);
+            Student[] prefixStudents = getStudentsForCourse(students, prefix);
             
             String filename = "course" + (i + 1) + ".csv";
             writeStudentsToCsv(prefixStudents, filename);
